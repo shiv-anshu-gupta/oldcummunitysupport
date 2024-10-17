@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login as NGO/Caretaker</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/login.js" defer></script>
+    <style>
+      /* Reset some basic styling */
+      body,
+      h1,
+      p,
+      form {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Body styling */
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f9f9f9;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        align-items: center;
+        background-image: url(../main-back.jpg);
+      }
+
+      /* Navigation bar styling */
+      .navbar {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+      }
+
+      .navbar .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+
+      .navbar .nav-links {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+      }
+
+      .navbar .nav-links li {
+        margin: 0;
+      }
+
+      .navbar .nav-links a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        font-size: 1em;
+      }
+
+      .navbar .nav-links a:hover {
+        background-color: #0056b3;
+        border-radius: 5px;
+      }
+
+      /* Content styling */
+      .content {
+        padding: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Form styling */
+      form {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      form label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      form input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+
+      form button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      form button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Link styling */
+      p a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      p a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Login as NGO/Caretaker</h1>
+    <form id="ngoLoginForm" method="post" action="/ngo/login">
+      <div id="emailField">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" /><br /><br />
+      </div>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" /><br /><br />
+
+      <button type="submit">Login</button>
+    </form>
+
+    <p>New NGO? <a href="/ngo/register">Register here</a></p>
+  </body>
+</html>

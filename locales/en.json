@@ -1,0 +1,9 @@
+{
+  "welcome": "Welcome to the Chat",
+  "send": "Send",
+  "typeMessage": "Type your message...",
+  "userDashboard": "User Dashboard",
+  "viewMedicalSupport": "View Medical Support",
+  "viewEvents": "View Events",
+  "logout": "Logout"
+}

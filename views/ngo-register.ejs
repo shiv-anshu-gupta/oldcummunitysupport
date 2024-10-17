@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NGO Registration</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+    <style>
+      /* Reset some basic styling */
+      body,
+      h1,
+      p,
+      form {
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Body styling */
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f9f9f9;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      /* Navigation bar styling */
+      .navbar {
+        background-color: #007bff;
+        color: white;
+        padding: 10px;
+      }
+
+      .navbar .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+
+      .navbar .nav-links {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+      }
+
+      .navbar .nav-links li {
+        margin: 0;
+      }
+
+      .navbar .nav-links a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        font-size: 1em;
+      }
+
+      .navbar .nav-links a:hover {
+        background-color: #0056b3;
+        border-radius: 5px;
+      }
+
+      /* Content styling */
+      .content {
+        padding: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Form container styling */
+      .form-container {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      /* Form styling */
+      form label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      form input {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+
+      form button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      form button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Link styling */
+      p a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      p a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Register NGO</h1>
+      <form action="/ngo/register" method="POST" id="register-form">
+        <label for="name">NGO Name:</label>
+        <input type="text" id="name" name="name" required /><br /><br />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required /><br /><br />
+
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+        /><br /><br />
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </body>
+</html>

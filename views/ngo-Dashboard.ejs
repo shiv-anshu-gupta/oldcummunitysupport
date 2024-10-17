@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NGO Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Reset */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        background-color: #f4f4f4;
+      }
+
+      .header {
+        background-color: #333;
+        color: #fff;
+        padding: 1em;
+        text-align: center;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5em 1em;
+        background-color: #444;
+      }
+
+      .navbar ul {
+        list-style: none;
+        display: flex;
+      }
+
+      .navbar li {
+        margin-right: 20px;
+      }
+
+      .navbar a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .navbar a:hover {
+        color: #ccc;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 2em auto;
+        padding: 1em;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .section {
+        margin-bottom: 20px;
+      }
+
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        width: calc(33.33% - 20px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .card h3 {
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .card p {
+        color: #666;
+      }
+
+      .edit-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .edit-button:hover {
+        background-color: #0056b3;
+      }
+
+      .form-container {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+      }
+
+      .form-container h2 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .form-container label {
+        display: block;
+        margin-bottom: 8px;
+        color: #555;
+      }
+
+      .form-container input,
+      .form-container textarea,
+      .form-container select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 15px;
+      }
+
+      .form-container button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .form-container button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      @media (max-width: 768px) {
+        .card {
+          width: calc(50% - 20px);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .card {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Welcome to the NGO Dashboard, <%= ngoName %>!</h1>
+    </header>
+
+    <nav class="navbar">
+      <ul>
+        <li><a href="/ngo/medical-support">Manage Medical Support</a></li>
+        <li><a href="/ngo/events">Manage Events</a></li>
+        <li><a href="/ngo/chat">Queries</a></li>
+        <li><a href="/ngo/create-user">Create User</a></li>
+      </ul>
+      <div class="navbar-user">
+        <p>Logged in as: <strong><%= ngoName %></strong></p>
+        <a href="/ngo/logout" class="logout-button">Logout</a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <!-- Medical Support Section -->
+      <section class="section posts-section">
+        <h2>Latest Medical Support</h2>
+        <div class="card-container">
+          <% if (medicalSupports && medicalSupports.length > 0) { %> <%
+          medicalSupports.slice(0, 3).forEach(support => { %>
+          <article class="card">
+            <h3><%= support.title %></h3>
+            <p><%= support.description %></p>
+          </article>
+          <% }); %>
+          <a href="/ngo/manage-medical-support">View All</a>
+          <% } else { %>
+          <p>No medical support posted yet.</p>
+          <% } %>
+        </div>
+      </section>
+
+      <!-- Events Section -->
+      <section class="section events-section">
+        <h2>Upcoming Events</h2>
+        <div class="card-container">
+          <% if (events && events.length > 0) { %> <% events.slice(0,
+          3).forEach(event => { %>
+          <article class="card">
+            <h3><%= event.title %></h3>
+            <p><%= event.date %> - <%= event.description %></p>
+          </article>
+          <% }); %>
+          <a href="/ngo/manage-events">View All</a>
+          <% } else { %>
+          <p>No upcoming events yet.</p>
+          <% } %>
+        </div>
+      </section>
+    </main>
+
+    <!-- Form Section -->
+    <aside class="form-container">
+      <h2>Create New Medical Support Post</h2>
+      <form action="/ngo/create-medical-support" method="post">
+        <label for="postTitle">Title:</label>
+        <input type="text" id="postTitle" name="title" required />
+        <label for="postDescription">Description:</label>
+        <textarea
+          id="postDescription"
+          name="description"
+          rows="4"
+          required
+        ></textarea>
+        <label for="postType">Type:</label>
+        <select id="postType" name="type" required>
+          <option value="">Select Type</option>
+          <option value="Medicine">Medicine</option>
+          <option value="Doctor Consultation">Doctor Consultation</option>
+          <option value="Nursing Support">Nursing Support</option>
+          <option value="Medical Aid">Medical Aid</option>
+          <option value="Equipment">Equipment</option>
+          <option value="Health Checkup">Health Checkup</option>
+        </select>
+        <button type="submit">Create Post</button>
+      </form>
+
+      <h2>Create New Event</h2>
+      <form action="/ngo/create-event" method="post">
+        <label for="eventTitle">Title:</label>
+        <input type="text" id="eventTitle" name="title" required />
+        <label for="eventDate">Date:</label>
+        <input type="date" id="eventDate" name="date" required />
+        <label for="eventTime">Time:</label>
+        <input type="time" id="eventTime" name="time" required />
+        <label for="eventLocation">Location:</label>
+        <input type="text" id="eventLocation" name="location" required />
+        <label for="eventDescription">Description:</label>
+        <textarea
+          id="eventDescription"
+          name="description"
+          rows="4"
+          required
+        ></textarea>
+        <label for="organizer">Organizer</label>
+        <input type="text" id="organizer" name="organizer" required />
+        <button type="submit">Create Event</button>
+      </form>
+    </aside>
+  </body>
+</html>

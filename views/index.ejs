@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <style>
+      /* Reset default margin and padding */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-image: url("/images/indexBack.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #333;
+        margin: 0;
+      }
+
+      /* Add animation to index container */
+      .indexcontainer {
+        text-align: center;
+        background-color: #fff;
+        padding: 50px 40px;
+        border-radius: 20px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        max-width: 650px;
+
+        /* Start invisible and slightly translated */
+        opacity: 0;
+        transform: translateY(20px);
+
+        /* Apply animation */
+        animation: fadeInUp 0.8s ease-out 1s forwards; /* 1s delay */
+      }
+
+      /* Animation for fading in and sliding up */
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .indexheading h1 {
+        font-size: 2.4rem;
+        color: #333;
+        line-height: 1.4;
+        margin-bottom: 30px;
+      }
+
+      .options {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      .options div {
+        background-color: #ff6b6b;
+        padding: 15px 30px;
+        border-radius: 12px;
+        width: 45%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .options div:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      .options a {
+        text-decoration: none;
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: white;
+        display: block;
+      }
+
+      .loginasNGO {
+        background-color: #ff6b6b;
+        background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+      }
+
+      .accessasUser {
+        background-color: #f0a500;
+        background: linear-gradient(135deg, #f0a500, #f3c000);
+      }
+
+      .loginasNGO:hover,
+      .accessasUser:hover {
+        background-color: #ff8f8f;
+      }
+
+      /* Media Queries for Smaller Screens */
+      @media (max-width: 600px) {
+        .options {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .options div {
+          width: 100%;
+        }
+
+        .indexcontainer {
+          padding: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="indexcontainer">
+      <div class="indexheading">
+        <h1>
+          वरिष्ठ नागरिकों का सशक्तिकरण: देखभाल, सहायता और समुदाय से जोड़ने की
+          पहल
+        </h1>
+      </div>
+      <div class="options">
+        <div class="loginasNGO">
+          <a href="/login">Login as NGO/Caretaker</a>
+        </div>
+        <div class="accessasUser">
+          <a href="/user-access">उपयोगकर्ता के रूप में प्रवेश</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

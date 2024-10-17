@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Medical Support</title>
+  </head>
+  <body>
+    <h1>Edit Medical Support</h1>
+
+    <form action="/ngo/edit-medical-support/<%= medicalSupport._id %>" method="POST">
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="<%= medicalSupport.title %>" required />
+      </div>
+
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" required><%= medicalSupport.description %></textarea>
+      </div>
+
+      <div>
+        <label for="type">Type:</label>
+        <select id="type" name="type" required>
+          <option value="medicine" <%= medicalSupport.type === "medicine" ? "selected" : "" %>>Medicine</option>
+          <option value="doctor-consultation" <%= medicalSupport.type === "doctor-consultation" ? "selected" : "" %>>Doctor Consultation</option>
+          <option value="nursing-support" <%= medicalSupport.type === "nursing-support" ? "selected" : "" %>>Nursing Support</option>
+          <option value="medical-aid-equipment" <%= medicalSupport.type === "medical-aid-equipment" ? "selected" : "" %>>Medical Aid Equipment</option>
+        </select>
+      </div>
+
+      <button type="submit">Update Medical Support</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #007bff;
+        padding: 15px 20px;
+        color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      header .username {
+        font-size: 1.4em;
+        font-weight: bold;
+      }
+
+      header .logout {
+        font-size: 1.2em;
+        text-decoration: none;
+        background-color: #dc3545;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+      }
+
+      header .logout:hover {
+        background-color: #c82333;
+      }
+
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-top: 30px;
+        font-size: 3em;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 50px;
+        flex-wrap: wrap;
+      }
+
+      .card {
+        background-color: white;
+        border-radius: 15px;
+        padding: 20px;
+        width: 300px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+        text-align: center;
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .card img {
+        width: 180px; /* Increased width */
+        height: 180px; /* Increased height */
+        margin-bottom: 15px;
+      }
+
+      .card h2 {
+        font-size: 1.5em;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .card p {
+        color: #666;
+        font-size: 1em;
+        margin-bottom: 20px;
+      }
+
+      .card a {
+        text-decoration: none;
+        font-size: 1em;
+        color: #007bff;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+
+      .card a:hover {
+        color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="username">नमस्ते, <%= user %>!</div>
+      <a href="/user/logout" class="logout">बंद करे</a>
+    </header>
+
+    <h1>सुविधाएँ</h1>
+
+    <div class="card-container">
+      <div class="card">
+        <img src="/images/medical.jpg" alt="Medical Support Icon" />
+        <h2>Medical Support</h2>
+        <p>पेशेवरों से 24/7 चिकित्सा सलाह और सहायता प्राप्त करें।</p>
+        <a href="/user/view-medical-support">चिकित्सा सहायता</a>
+      </div>
+
+      <div class="card">
+        <img src="/images/event.jpg" alt="Events Icon" />
+        <h2>Events</h2>
+        <p>
+          अपने आस-पास होने वाले आगामी कार्यक्रमों और कार्यशालाओं का पता लगाएं।
+        </p>
+        <a href="/user/view-events">कार्यक्रम</a>
+      </div>
+
+      <div class="card">
+        <img src="/images/chat.jpg" alt="Chat Icon" />
+        <h2>Chat</h2>
+        <p>
+          लाइव चैट के माध्यम से तुरंत सहायता एजेंटों या अपने दोस्तों से जुड़े
+        </p>
+        <a href="/user/chat">Chat</a>
+      </div>
+    </div>
+  </body>
+</html>

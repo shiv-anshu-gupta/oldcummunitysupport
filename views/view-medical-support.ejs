@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Available Medical Support</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      th {
+        background-color: #007bff;
+        color: white;
+      }
+      .select-button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      .select-button:hover {
+        background-color: #218838;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>उपलब्ध चिकित्सा सहायता</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>NGO Name</th>
+          <th>Created At</th>
+          <th>Select</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% medicalSupports.forEach(support => { %>
+        <tr>
+          <td><%= support.title %></td>
+          <td><%= support.description %></td>
+          <td><%= support.type %></td>
+          <td><%= support.ngoName %></td>
+          <td><%= support.createdAt.toDateString() %></td>
+          <td>
+            <!-- Form to select a particular medical support -->
+            <form action="/user/select-medical-support" method="POST">
+              <input
+                type="hidden"
+                name="medicalSupportId"
+                value="<%= support._id %>"
+              />
+              <button type="submit" class="select-button">Select</button>
+            </form>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
+</html>
