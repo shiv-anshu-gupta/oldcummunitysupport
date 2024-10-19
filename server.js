@@ -96,10 +96,11 @@ io.on("connection", (socket) => {
 
 // MongoDB connection
 const PORT = process.env.PORT || 3001;
-const mongoURI = "mongodb://localhost:27017/seniorCitizen";
+const mongoURI =
+  "mongodb+srv://shivanshu2019gupta:JyUZhyiQamN7kUT6@cluster1.3wvpp.mongodb.net/SeniorCitizen?retryWrites=true&w=majority&appName=Cluster1";
 
 mongoose
-  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(mongoURI)
   .then(() => {
     server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
